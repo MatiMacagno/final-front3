@@ -6,22 +6,24 @@ const ContextGlobal = createContext();
 const initialState = {
   theme: "",
   dentistList: [],
-  dentist: {},
   favorites: JSON.parse(localStorage.getItem('favorites')) || []
 }
 
 const dentistReducer = (state, action) => {
   switch (action.type) {
-    case 'GET_LIST':
-      return { ...state, dentistList: action.payload }
-    case 'GET_DENTIST':
-      return { ...state, dentist: action.payload }
-    case "ADD_FAVORITES":
-      return { ...state, favorites: [ ...state.favorites, action.payload ] }
-    default:
-      throw new Error()
-  }
+    case 'GET_DENTIST_LIST':
+      return { ...state, dentistList: [...action.payload] }
+    case 'ADD_FAV':
+      const favorites = state.favorites ? [...state.favorites, action.payload ] : [action.payload]
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      return { ...state, favorites }
+      case 'REMOVE_FAV':
+        const newFavorites = state.favorites.filter(dentist => dentist !== action.payload);
+        localStorage.setItem("favorites", JSON.stringify(newFavorites));
+        return { ...state, favorites: newFavorites };
+    }
 }
+
 
 const Context = ({ children }) => {
 
@@ -31,13 +33,9 @@ const Context = ({ children }) => {
 
   useEffect(() => {
     axios(urlList)
-      .then(res => dentistDispatch({ type: 'GET_LIST', payload: res.data }))
+      .then(res => dentistDispatch({ type: 'GET_DENTIST_LIST', payload: res.data }))
       .catch(err => console.log(err))
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(dentistState.favorites))
-  }, [dentistState.favorites])
 
   return (
     <ContextGlobal.Provider value={{
