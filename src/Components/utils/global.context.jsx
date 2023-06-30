@@ -1,10 +1,11 @@
 import { createContext, useReducer, useState, useEffect, useContext } from "react";
 import axios from 'axios'
+import { THEME } from "./theme";
 
 const ContextGlobal = createContext();
 
 const initialState = {
-  theme: "",
+  theme: THEME.LIGHT_THEME,
   dentistList: [],
   favorites: JSON.parse(localStorage.getItem('favorites')) || []
 }
@@ -21,6 +22,8 @@ const dentistReducer = (state, action) => {
         const newFavorites = state.favorites.filter(dentist => dentist !== action.payload);
         localStorage.setItem("favorites", JSON.stringify(newFavorites));
         return { ...state, favorites: newFavorites };
+      case 'TOGGLE_THEME':
+        return { ...state, theme: action.payload }
     }
 }
 
