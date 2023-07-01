@@ -29,7 +29,7 @@ const Navbar = () => {
         
           {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
           <div>
-            <Link to={routes.home}><img src="././images/DH.png" alt='DH-logo' /></Link>
+            <Link to={routes.home}><img src="/images/DH.png" alt='DH-logo' /></Link>
           </div>
           <div>
             <Link className='link' to={routes.home}>Home</Link>

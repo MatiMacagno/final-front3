@@ -127,8 +127,8 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
+  border: 1px solid #000;
+  text-align: center;
   padding: 8px;
 }
 
@@ -265,7 +265,19 @@ input {
   background-color: #a1b1bb;
 }
 
+.dark tr {
+  position: relative;
+  left: 50%;
+  background-color: #fff;
+  color: #000;
+}
 
+.light tr {
+  position: relative;
+  left: 50%;
+  background-color: #fff;
+  color: #000;
+}
 
 
 

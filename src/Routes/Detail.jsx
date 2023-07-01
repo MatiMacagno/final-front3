@@ -22,13 +22,16 @@ const Detail = () => {
   }, [])
 
   return (
-      <div className={themeState.className}>
-        <h1>{dentist.name}</h1>
-        <h2>{dentist.username}</h2>
-        <h2>{dentist.email}</h2>
-        <h2>{dentist.phone}</h2>
-        <h2>{dentist.website}</h2>
-      </div>
+        <main className={themeState.className}>
+          <h1>Dentist Detail</h1>
+          <tr>
+            <th><h2>{dentist.name}</h2></th>
+            <th><h2>{dentist.username}</h2></th>
+            <th><h2>{dentist.email}</h2></th>
+            <th><h2>{dentist.phone}</h2></th>
+            <th><h2>{dentist.website}</h2></th>
+          </tr>
+        </main>
   )
 }
 

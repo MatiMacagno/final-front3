@@ -27,7 +27,7 @@ const Card = (props) => {
         {/* En cada card deberan mostrar en name - username y el id */}
         <div className="card">
             <Link to={"/dentist/" + props.dentist.id}>
-              <img src="././public/images/doctor.jpg" alt="doctor"/>
+              <img src="/images/doctor.jpg" alt="doctor"/>
               <h1>{props.dentist.name}</h1>
               <h2>{props.dentist.username}</h2>
             </Link>
