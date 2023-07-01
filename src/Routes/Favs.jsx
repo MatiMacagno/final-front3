@@ -6,13 +6,13 @@ import { useDentistStates } from '../Components/utils/global.context'
 
 const Favs = () => {
 
-  const { dentistState } = useDentistStates()
+  const { dentistState, themeState } = useDentistStates()
 
   const dentistFavs = dentistState?.favorites || []
 
   return (
-    <div style={dentistState.theme}>
-      <h1>Dentists Favs</h1>
+    <div className={themeState.className}>
+      <h1>Favorites</h1>
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage */}
         {/* Deberan renderizar una Card por cada uno de ellos */}

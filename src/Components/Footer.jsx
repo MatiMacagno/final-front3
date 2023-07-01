@@ -1,9 +1,11 @@
 import React from 'react'
-
+import { useDentistStates } from '../Components/utils/global.context'
 
 const Footer = () => {
+
+  const {themeState} = useDentistStates()
   return (
-    <footer>
+    <footer className={themeState.className}>
         <p>Powered by</p>
         <img src="././public/images/DH.png" alt='DH-logo'/>
     </footer>

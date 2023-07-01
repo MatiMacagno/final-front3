@@ -1,12 +1,12 @@
-export const THEME = {
-    LIGHT_THEME: {
-        backgroundColor: 'white',
-        color: '#12121296',
+export const themes = {
+    dark: {
+        theme: true,
+        className: 'dark'
     },
 
-    DARK_THEME: {
-        backgroundColor: '#12121296',
-        color: 'white'
+    light:{
+        theme: false,
+        className: 'light'
     }
 }
 

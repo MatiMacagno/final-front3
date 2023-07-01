@@ -1,14 +1,15 @@
 import { createContext, useReducer, useState, useEffect, useContext } from "react";
 import axios from 'axios'
-import { THEME } from "./theme";
+import { themes } from "./theme";
 
 const ContextGlobal = createContext();
 
 const initialState = {
-  theme: THEME.LIGHT_THEME,
   dentistList: [],
   favorites: JSON.parse(localStorage.getItem('favorites')) || []
 }
+
+const initialTheme = themes.light
 
 const dentistReducer = (state, action) => {
   switch (action.type) {
@@ -22,15 +23,25 @@ const dentistReducer = (state, action) => {
         const newFavorites = state.favorites.filter(dentist => dentist !== action.payload);
         localStorage.setItem("favorites", JSON.stringify(newFavorites));
         return { ...state, favorites: newFavorites };
-      case 'TOGGLE_THEME':
-        return { ...state, theme: action.payload }
-    }
+  }
 }
 
+const themeReducer = (state, action) => {
+  switch (action.type) {
+    case "SWITCH_DARK":
+      return themes.dark;
+    case "SWITCH_LIGHT":
+      return themes.light;
+    default: 
+      throw new Error();
+  }
+};
 
 const Context = ({ children }) => {
 
   const [dentistState, dentistDispatch] = useReducer(dentistReducer, initialState)
+
+  const [themeState, themeDispatch] = useReducer(themeReducer, initialTheme);
 
   const urlList = 'https://jsonplaceholder.typicode.com/users'
 
@@ -42,12 +53,13 @@ const Context = ({ children }) => {
 
   return (
     <ContextGlobal.Provider value={{
-      dentistState, dentistDispatch
+      dentistState, dentistDispatch, themeState, themeDispatch
     }}>
       {children}
     </ContextGlobal.Provider>
   );
 };
+
 
 export default Context;
 export const useDentistStates = () => useContext(ContextGlobal)

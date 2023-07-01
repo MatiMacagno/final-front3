@@ -6,12 +6,14 @@ import { useDentistStates } from '../Components/utils/global.context'
 
 const Contact = () => {
 
-  const { dentistState } = useDentistStates();
+  const { themeState } = useDentistStates();
 
   return (
-    <div style={dentistState.theme}>
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
+    <div className={themeState.className} >
+      <div className="form-title">
+        <h1>Want to know more?</h1>
+        <h2>Send us your questions and we will contact you</h2>
+      </div>
       <Form/>
     </div>
   )

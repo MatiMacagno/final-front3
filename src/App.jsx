@@ -6,6 +6,7 @@ import Contact from './Routes/Contact'
 import Favs from './Routes/Favs'
 import Detail from './Routes/Detail'
 import PageNotFound from './Routes/PageNotFound'
+import './index.css';
 import { routes } from './Routes/routes'
 
 
@@ -13,7 +14,7 @@ import { routes } from './Routes/routes'
 
 function App() {
   return (
-      <div className="App">
+      <div className="app">
         <Navbar/>
           <Routes>
               <Route path={routes.home} element={<Home/>}/>

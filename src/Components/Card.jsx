@@ -23,20 +23,21 @@ const Card = (props) => {
   }
    
   return (
-    <div className="card">
+    <div style={dentistState.theme}>
         {/* En cada card deberan mostrar en name - username y el id */}
-          <Link to={"/dentist/" + props.dentist.id}>
-            <img src="././public/images/doctor.jpg" alt="doctor"/>
-            <h1>{props.dentist.name}</h1>
-            <h2>{props.dentist.username}</h2>
-          </Link>
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <div style={{display: 'flex'}}>
-        <button onClick={addFavs} className="favButton">⭐</button>
-        <button onClick={removeFavs} className="favButton">💔</button>
+        <div className="card">
+            <Link to={"/dentist/" + props.dentist.id}>
+              <img src="././public/images/doctor.jpg" alt="doctor"/>
+              <h1>{props.dentist.name}</h1>
+              <h2>{props.dentist.username}</h2>
+            </Link>
+          {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
+          {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
+          <div style={{display: 'flex'}}>
+            <button onClick={addFavs} className="favButton">⭐</button>
+            <button onClick={removeFavs} className="favButton">💔</button>
+          </div>
         </div>
-        
     </div>
   );
 };

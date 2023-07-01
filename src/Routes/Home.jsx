@@ -6,11 +6,11 @@ import { useDentistStates } from '../Components/utils/global.context'
 
 const Home = () => {
 
-  const { dentistState } = useDentistStates()
+  const { dentistState, themeState } = useDentistStates()
 
   return (
-    <main className="" style={dentistState.theme} >
-      <h1>Home</h1>
+    <main className={themeState.className}>
+      <h1>Dentists</h1>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
         {dentistState.dentistList.map( dentist => <Card key={dentist.id} dentist={dentist}></Card>)}

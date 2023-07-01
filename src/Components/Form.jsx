@@ -28,8 +28,8 @@ const Form = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form">
+      <form onSubmit={handleSubmit} className="contact">
         <input type="text" placeholder="Name" id="user-name" disabled={isDisabled} onChange={(e) => setDataUser({ ...dataUser, name: e.target.value })} value={dataUser.name} />
         <input type="text" placeholder="Email" id="user-email" disabled={isDisabled} onChange={(e) => setDataUser({ ...dataUser, email: e.target.value })} value={dataUser.email}/>
         <button className='button-form'>Submit</button>
